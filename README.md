@@ -126,7 +126,7 @@ import stylesheet from './path/to/stylesheet.js'
 jsincss(stylesheet)
 ```
 
-For a more advanced example, check out the [test](https://tomhodgins.github.io/jsincss-element-query/test/) file which includes [element-query.js](test/element-query.js) and [element-query-scroll.js](test/element-query-scroll.js) and includes them in a module like this:
+For a more advanced example, check out the [test](https://tomhodgins.github.io/jsincss-element-query/test/index) file which includes [element-query.js](test/element-query.js) and [element-query-scroll.js](test/element-query-scroll.js) and includes them in a module like this:
 
 ```javascript
 import jsincss from '//unpkg.com/jsincss/index.js'
