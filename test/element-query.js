@@ -1,4 +1,4 @@
-import element from '//unpkg.com/jsincss-element-query/index.js'
+import element from '../index.js'
 
 export default () => { return `
 
@@ -50,8 +50,24 @@ export default () => { return `
     }
   `)}
 
-  /* Min-characters on textarea */
-  ${element('.mincharacters-textarea', {minCharacters: 35}, `
+  /* Characters on block elements */
+  ${element('.characters', {characters: 5}, `
+    :self {
+      background: greenyellow;
+      border-color: limegreen;
+    }
+  `)}
+
+  /* Characters on input */
+  ${element('.characters-input', {characters: 5}, `
+    :self {
+      background: greenyellow;
+      border-color: limegreen;
+    }
+  `)}
+
+  /* Characters on textarea */
+  ${element('.characters-textarea', {characters: 5}, `
     :self {
       background: greenyellow;
       border-color: limegreen;
@@ -84,6 +100,14 @@ export default () => { return `
 
   /* Min-children */
   ${element('.minchildren', {minChildren: 5}, `
+    :self {
+      background: greenyellow;
+      border-color: limegreen;
+    }
+  `)}
+
+  /* Children */
+  ${element('.children', {children: 5}, `
     :self {
       background: greenyellow;
       border-color: limegreen;

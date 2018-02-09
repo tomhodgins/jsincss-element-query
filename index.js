@@ -1,4 +1,4 @@
-export default function (selector, conditions, stylesheet) {
+export default (selector, conditions, stylesheet) => {
 
   const features = {
     minWidth: (el, number) => number <= el.offsetWidth,
@@ -6,8 +6,10 @@ export default function (selector, conditions, stylesheet) {
     minHeight: (el, number) => number <= el.offsetHeight,
     maxHeight: (el, number) => number >= el.offsetHeight,
     minChildren: (el, number) => number <= el.children.length,
+    children: (el, number) => number === el.children.length,
     maxChildren: (el, number) => number >= el.children.length,
     minCharacters: (el, number) => number <= ((el.value && el.value.length) || el.textContent.length),
+    characters: (el, number) => number === ((el.value && el.value.length) || el.textContent.length),
     maxCharacters: (el, number) => number >= ((el.value && el.value.length) || el.textContent.length),
     minScrollX: (el, number) => number <= el.scrollLeft,
     maxScrollX: (el, number) => number >= el.scrollLeft,

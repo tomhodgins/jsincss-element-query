@@ -127,6 +127,15 @@
 <input type=text class=mincharacters-input value='class="mincharacters-input"'>
 <textarea class=mincharacters-textarea>class="mincharacters-textarea"</textarea>
 
+<h3>characters on block elements</h3>
+<p>(Use keyboard)</p>
+<div class=characters contenteditable>class="characters"</div>
+
+<h3>characters on form inputs</h3>
+<p>(Use keyboard)</p>
+<input type=text class=characters-input value='class="characters-input"'>
+<textarea class=characters-textarea>class="characters-textarea"</textarea>
+
 <h3>max-characters on block elements</h3>
 <p>(Use keyboard)</p>
 <div class=maxcharacters contenteditable>class="maxcharacters"</div>
@@ -139,6 +148,12 @@
 <h3>min-children</h3>
 <button data-button=semiflat onclick="var img=document.createElement('img');img.src='https://staticresource.s3.amazonaws.com/user.png';document.querySelector('.minchildren').appendChild(img)">Add Child</button>
 <div class=minchildren>
+<img src=https://staticresource.s3.amazonaws.com/user.png style=width:50px>
+</div>
+
+<h3>children</h3>
+<button data-button=semiflat onclick="var img=document.createElement('img');img.src='https://staticresource.s3.amazonaws.com/user.png';document.querySelector('.children').appendChild(img)">Add Child</button>
+<div class=children>
 <img src=https://staticresource.s3.amazonaws.com/user.png style=width:50px>
 </div>
 
@@ -186,7 +201,7 @@
 <div class=maxaspectratio data-drag=both>class="maxaspectratio"</div>
 
 <script type=module>
-  import jsincss from '//unpkg.com/jsincss/index.js'
+  import jsincss from 'https://unpkg.com/jsincss/index.js'
   import stylesheet from './element-query.js'
   import scrollStyles from './element-query-scroll.js'
 

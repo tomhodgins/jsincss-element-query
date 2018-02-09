@@ -1,4 +1,4 @@
-import element from '//unpkg.com/jsincss-element-query/index.js'
+import element from '../index.js'
 
 export default () => { return `
 
