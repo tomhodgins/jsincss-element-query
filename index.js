@@ -20,7 +20,7 @@ export default (selector, conditions, stylesheet) => {
     orientation: (el, string) => {
       switch (string) {
         case 'portrait': return el.offsetWidth < el.offsetHeight
-        case 'square': return el.offsetWidth == el.offsetHeight
+        case 'square': return el.offsetWidth === el.offsetHeight
         case 'landscape': return el.offsetWidth > el.offsetHeight
       }
     }
@@ -35,15 +35,8 @@ export default (selector, conditions, stylesheet) => {
                        + Object.keys(conditions)
                        + Object.values(conditions)).replace(/\W/g, '')
 
-    let results = []
-
-    for (let test in conditions) {
-
-      results.push(features[test](tag, conditions[test]) ? true : false)
-
-    }
-
-    if (results.indexOf(false) == -1) {
+    if (Object.entries(conditions)
+         .every(test => features[test[0]](tag, test[1]))) {
 
       tag.setAttribute(`data-${identifier}`, count)
       generatedStyles += stylesheet.replace(/:self|\$this/g, `[data-${identifier}="${count}"]`)
