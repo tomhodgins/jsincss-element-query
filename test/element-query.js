@@ -1,6 +1,6 @@
 import element from '../index.js'
 
-export default () => { return `
+export default () => `
 
   /* Min-width */
   ${element('.minwidth', {minWidth: 300}, `
@@ -193,4 +193,4 @@ export default () => { return `
     }
   `)}
 
-`}
+`

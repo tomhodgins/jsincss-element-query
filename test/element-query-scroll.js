@@ -1,6 +1,6 @@
 import element from '../index.js'
 
-export default () => { return `
+export default () => `
 
   /* Min-scroll-y */
   ${element('.min-scroll-y', {minScrollY: 50}, `
@@ -34,4 +34,4 @@ export default () => { return `
     }
   `)}
 
-`}
+`

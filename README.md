@@ -81,30 +81,7 @@ This example will use the `jsincss` plugin to load a JS-in-CSS stylesheet making
   import jsincss from 'https://unpkg.com/jsincss/index.js'
   import element from 'https://unpkg.com/jsincss-element-query/index.js'
 
-  jsincss(() => {
-
-    return `
-
-      ${element('div', {minWidth: 500}, `
-        :self {
-          background: lime;
-        }
-      `)}
-
-    `
-
-  })
-</script>
-```
-
-It's also possible to write your stylesheets as a separate JavaScript module like this, where you import any helper plugins at the top of the stylesheet:
-
-```js
-import element from 'http://unpkg.com/jsincss-element-query/index.js'
-
-export default () => {
-
-  return `
+  jsincss(() => `
 
     ${element('div', {minWidth: 500}, `
       :self {
@@ -112,9 +89,24 @@ export default () => {
       }
     `)}
 
-  `
+  `)
+</script>
+```
 
-}
+It's also possible to write your stylesheets as a separate JavaScript module like this, where you import any helper plugins at the top of the stylesheet:
+
+```js
+import element from 'https://unpkg.com/jsincss-element-query/index.js'
+
+export default () => `
+
+  ${element('div', {minWidth: 500}, `
+    :self {
+      background: lime;
+    }
+  `)}
+
+`
 ```
 
 And then import both the `jsincss` plugin and the stylesheet into your code and run them like this, suppling any `selector` or `events` list the `jsincss` plugin might need to apply the stylesheet only the the element(s) and event(s) you require, depending on what you're doing:
