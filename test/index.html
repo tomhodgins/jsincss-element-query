@@ -206,5 +206,6 @@
   import scrollStyles from './element-query-scroll.js'
 
   jsincss(stylesheet)
-  jsincss(scrollStyles, ['[class*="-scroll-"]'], ['scroll'])
+  jsincss(scrollStyles, window, ['load'])
+  jsincss(scrollStyles, '[class*="-scroll-"]', ['scroll'])
 </script>
