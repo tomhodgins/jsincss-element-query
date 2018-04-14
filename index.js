@@ -26,30 +26,37 @@ export default (selector, conditions, stylesheet) => {
     }
   }
 
-  let generatedStyles = ''
-  let count = 0
+  return Array.from(document.querySelectorAll(selector))
 
-  document.querySelectorAll(selector).forEach(tag => {
+    .reduce((styles, tag, count) => {
 
-    const identifier = (selector
-                       + Object.keys(conditions)
-                       + Object.values(conditions)).replace(/\W/g, '')
+      const identifier = (
+        selector
+        + Object.keys(conditions)
+        + Object.values(conditions)
+      ).replace(/\W/g, '')
 
-    if (Object.entries(conditions)
-         .every(test => features[test[0]](tag, test[1]))) {
+      if (
+        Object.entries(conditions).every(test =>
+          features[test[0]](tag, test[1])
+        )
+      ) {
 
-      tag.setAttribute(`data-${identifier}`, count)
-      generatedStyles += stylesheet.replace(/:self|\$this/g, `[data-${identifier}="${count}"]`)
-      count++
+        tag.setAttribute(`data-${identifier}`, count)
+        styles += stylesheet.replace(
+          /:self|\$this/g,
+          `[data-${identifier}="${count}"]`
+        )
+        count++
 
-    } else {
+      } else {
 
-      tag.setAttribute(`data-${identifier}`, '')
+        tag.setAttribute(`data-${identifier}`, '')
 
-    }
+      }
 
-  })
+      return styles
 
-  return generatedStyles
+    }, '')
 
 }
