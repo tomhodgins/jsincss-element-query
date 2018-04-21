@@ -3,6 +3,7 @@
   "version": "1.1.2",
   "description": "An element query plugin for jsincss",
   "main": "index.js",
+  "module": "index.vanilla.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,6 +12,8 @@
     "url": "git+https://github.com/tomhodgins/jsincss-element-query.git"
   },
   "keywords": [
+    "jsincss",
+    "js-in-css",
     "element",
     "query",
     "container",

@@ -1,4 +1,4 @@
-import element from '../index.js'
+import element from '../index.vanilla.js'
 
 export default () => `
 

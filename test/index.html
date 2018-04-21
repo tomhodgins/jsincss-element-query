@@ -201,11 +201,11 @@
 <div class=maxaspectratio data-drag=both>class="maxaspectratio"</div>
 
 <script type=module>
-  import jsincss from 'https://unpkg.com/jsincss/index.js'
+  import jsincss from 'https://unpkg.com/jsincss/index.vanilla.js'
   import stylesheet from './element-query.js'
   import scrollStyles from './element-query-scroll.js'
 
-  jsincss(stylesheet)
+  jsincss(stylesheet, window, ['load', 'resize', 'input', 'click', 'mouseup'])
   jsincss(scrollStyles, window, ['load'])
   jsincss(scrollStyles, '[class*="-scroll-"]', ['scroll'])
 </script>

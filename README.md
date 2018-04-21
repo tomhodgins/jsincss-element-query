@@ -8,7 +8,7 @@ This plugin is a JavaScript module that works with [JS-in-CSS stylesheets](https
 
 ## Downloading
 
-You can download `index.js` and add it to your codebase, or download it with npm:
+You can download jsincss-element-query and add it to your codebase manually, or download it with npm:
 
 ```bash
 npm install jsincss-element-query
@@ -18,25 +18,25 @@ Another option that works for building or testing, that isn't ideal for producti
 
 ```html
 <script type=module>
-  import element from 'https://unpkg.com/jsincss-element-query/index.js'
+  import element from 'https://unpkg.com/jsincss-element-query/index.vanilla.js'
 </script>
 ```
 
 ## Importing
 
-You can import the plugin into your own JavaScript modules in a couple of ways.
+This plugin exists in three different formats:
 
-The first way is using the native [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) in JavaScript. Here you can assign any name you want to the function you are importing, and you only need to provide a path to the plugin's `index.js` file:
+- CommonJS module: [index.js](index.js)
+- Vanilla JS module: [index.vanilla.js](index.vanilla.js)
+- Browser function: [index.browser.js](index.browser.js)
 
-```js
-import element from './node_modules/jsincss-element-query/index.js'
-```
-
-If you want to use `require` to load this plugin instead, and use a bundler like Webpack or Parcel, make sure to add `.default` as you require it:
+You can import this plugin using the native [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) statement in JavaScript. Here you can assign any name you want to the function you are importing, and you only need to provide a path to the plugin's `index.vanilla.js` file:
 
 ```js
-const element = require('jsincss-element-query').default
+import element from './index.vanilla.js'
 ```
+
+You can also use the CommonJS-formatted module located at [index.js](index.js) with `require()` for use with bundlers that don't use vanilla JS modules.
 
 Once you have imported this plugin into your module, you can use the plugin as `element()`
 
@@ -78,8 +78,8 @@ This example will use the `jsincss` plugin to load a JS-in-CSS stylesheet making
 
 ```html
 <script type=module>
-  import jsincss from 'https://unpkg.com/jsincss/index.js'
-  import element from 'https://unpkg.com/jsincss-element-query/index.js'
+  import jsincss from 'https://unpkg.com/jsincss/index.vanilla.js'
+  import element from 'https://unpkg.com/jsincss-element-query/index.vanilla.js'
 
   jsincss(() => `
 
@@ -96,7 +96,7 @@ This example will use the `jsincss` plugin to load a JS-in-CSS stylesheet making
 It's also possible to write your stylesheets as a separate JavaScript module like this, where you import any helper plugins at the top of the stylesheet:
 
 ```js
-import element from 'https://unpkg.com/jsincss-element-query/index.js'
+import element from 'https://unpkg.com/jsincss-element-query/index.vanilla.js'
 
 export default () => `
 
@@ -112,7 +112,7 @@ export default () => `
 And then import both the `jsincss` plugin and the stylesheet into your code and run them like this, suppling any `selector` or `events` list the `jsincss` plugin might need to apply the stylesheet only the the element(s) and event(s) you require, depending on what you're doing:
 
 ```js
-import jsincss from 'https://unpkg.com/jsincss/index.js'
+import jsincss from 'https://unpkg.com/jsincss/index.vanilla.js'
 import stylesheet from './path/to/stylesheet.js'
 
 jsincss(stylesheet)
@@ -121,7 +121,7 @@ jsincss(stylesheet)
 For a more advanced example, check out the [test](https://tomhodgins.github.io/jsincss-element-query/test/index) file which includes [element-query.js](test/element-query.js) and [element-query-scroll.js](test/element-query-scroll.js) and includes them in a module like this:
 
 ```javascript
-import jsincss from '//unpkg.com/jsincss/index.js'
+import jsincss from '//unpkg.com/jsincss/index.vanilla.js'
 import stylesheet from './element-query-test.js'
 import scrollStyles from './element-query-scroll-test.js'
 

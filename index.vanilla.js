@@ -1,4 +1,4 @@
-module.exports = (selector, conditions, stylesheet) => {
+export default (selector, conditions, stylesheet) => {
 
   const features = {
      minWidth: (el, number) => number <= el.offsetWidth,
