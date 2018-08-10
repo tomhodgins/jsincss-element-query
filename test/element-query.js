@@ -50,6 +50,14 @@ export default () => `
     }
   `)}
 
+  /* Min-characters on textarea */
+  ${element('.mincharacters-textarea', {minCharacters: 35}, `
+    :self {
+      background: greenyellow;
+      border-color: limegreen;
+    }
+  `)}
+
   /* Characters on block elements */
   ${element('.characters', {characters: 5}, `
     :self {
