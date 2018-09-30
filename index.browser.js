@@ -43,8 +43,7 @@ function element(selector, conditions, stylesheet) {
           /:self|\$this/g,
           `[data-element-${attr}="${count}"]`
         )
-        count++
-
+  
       } else {
 
         tag.setAttribute(`data-element-${attr}`, '')
