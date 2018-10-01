@@ -1,6 +1,6 @@
 {
   "name": "jsincss-element-query",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "An element query plugin for jsincss",
   "main": "index.js",
   "module": "index.vanilla.js",
