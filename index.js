@@ -40,7 +40,7 @@ module.exports = (selector, conditions, stylesheet) => {
 
         tag.setAttribute(`data-element-${attr}`, count)
         styles += stylesheet.replace(
-          /:self|\$this/g,
+          /:self|\$this|\[--self\]/g,
           `[data-element-${attr}="${count}"]`
         )
   
