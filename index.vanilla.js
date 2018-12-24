@@ -1,5 +1,5 @@
 export default (selector, conditions, stylesheet) => {
-
+  const attr = (selector + Object.keys(conditions) + Object.values(conditions)).replace(/\W/g, '')
   const features = {
     minWidth: (el, number) => number <= el.offsetWidth,
     maxWidth: (el, number) => number >= el.offsetWidth,
@@ -17,41 +17,32 @@ export default (selector, conditions, stylesheet) => {
     maxScrollY: (el, number) => number >= el.scrollTop,
     minAspectRatio: (el, number) => number <= el.offsetWidth / el.offsetHeight,
     maxAspectRatio: (el, number) => number >= el.offsetWidth / el.offsetHeight,
-    orientation: (el, string) => {
-      switch (string) {
-        case 'portrait': return el.offsetWidth < el.offsetHeight
-        case 'square': return el.offsetWidth === el.offsetHeight
-        case 'landscape': return el.offsetWidth > el.offsetHeight
-      }
-    }
+    orientation: (el, string) => ({
+      portrait: el => el.offsetWidth < el.offsetHeight,
+      square: el => el.offsetWidth === el.offsetHeight,
+      landscape: el => el.offsetHeight < el.offsetWidth
+    })
   }
-
-  return Array.from(document.querySelectorAll(selector))
-
-    .reduce((styles, tag, count) => {
-
-      const attr = (selector + Object.keys(conditions) + Object.values(conditions)).replace(/\W/g, '')
-
+  const result = Array.from(document.querySelectorAll(selector))
+    .reduce((output, tag, count) => {
       if (
         Object.entries(conditions).every(test =>
           features[test[0]](tag, test[1])
         )
       ) {
-
-        tag.setAttribute(`data-element-${attr}`, count)
-        styles += stylesheet.replace(
-          /:self|\$this|\[--self\]/g,
-          `[data-element-${attr}="${count}"]`
+        output.add.push({tag: tag, count: count})
+        output.styles.push(
+          stylesheet.replace(
+            /:self|\$this|\[--self\]/g,
+            `[data-element-${attr}="${count}"]`
+          )
         )
-  
       } else {
-
-        tag.setAttribute(`data-element-${attr}`, '')
-
+        output.remove.push(tag)
       }
-
-      return styles
-
-    }, '')
-
+      return output
+    }, {add: [], remove: [], styles: []})
+  result.add.forEach(tag => tag.tag.setAttribute(`data-element-${attr}`, tag.count))
+  result.remove.forEach(tag => tag.setAttribute(`data-element-${attr}`, ''))
+  return result.styles.join('\n')
 }
