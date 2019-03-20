@@ -8,9 +8,9 @@ function element(selector, conditions, stylesheet) {
     minChildren: (el, number) => number <= el.children.length,
     children: (el, number) => number === el.children.length,
     maxChildren: (el, number) => number >= el.children.length,
-    minCharacters: (el, number) => number <= ((el.value && el.value.length) || el.textContent.length),
-    characters: (el, number) => number === ((el.value && el.value.length) || el.textContent.length),
-    maxCharacters: (el, number) => number >= ((el.value && el.value.length) || el.textContent.length),
+    minCharacters: (el, number) => number <= (el.value ? el.value.length : el.textContent.length),
+    characters: (el, number) => number === (el.value ? el.value.length : el.textContent.length),
+    maxCharacters: (el, number) => number >= (el.value ? el.value.length : el.textContent.length),
     minScrollX: (el, number) => number <= el.scrollLeft,
     maxScrollX: (el, number) => number >= el.scrollLeft,
     minScrollY: (el, number) => number <= el.scrollTop,
@@ -21,7 +21,7 @@ function element(selector, conditions, stylesheet) {
       portrait: el => el.offsetWidth < el.offsetHeight,
       square: el => el.offsetWidth === el.offsetHeight,
       landscape: el => el.offsetHeight < el.offsetWidth
-    })
+    })[string](el)
   }
   const result = Array.from(document.querySelectorAll(selector))
     .reduce((output, tag, count) => {

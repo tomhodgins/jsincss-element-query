@@ -131,21 +131,21 @@ export default () => `
   `)}
 
   /* Square Orientation */
-  ${element('.square', {orientation: 'square'}, `
+  ${element('.orientation', {orientation: 'square'}, `
     :self {
       background: orchid;
     }
   `)}
 
   /* Portrait Orientation */
-  ${element('.portrait', {orientation: 'portrait'}, `
+  ${element('.orientation', {orientation: 'portrait'}, `
     :self {
       background: darkturquoise;
     }
   `)}
 
   /* Landscape Orientation */
-  ${element('.landscape', {orientation: 'landscape'}, `
+  ${element('.orientation', {orientation: 'landscape'}, `
     :self {
       background: greenyellow;
     }
